@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="BackGround" style="flex-grow: 1; align-items: center; justify-content: center;">
+        <ui:Label text="Walk : Press W&#10;Left : Press A&#10;Right : Press D&#10;jump : Press Space&#10;Rotate Right : Press R&#10;Rotate Left : Press Q" display-tooltip-when-elided="true" style="font-size: 50px; color: rgb(0, 0, 0);" />
+        <ui:Button text="Back" display-tooltip-when-elided="true" focusable="false" name="Back" style="height: 207px; width: 510px; background-image: url(&apos;/Assets/Viking/UI/UIElement_Button.png&apos;); border-top-left-radius: 80px; border-bottom-left-radius: 80px; border-top-right-radius: 80px; border-bottom-right-radius: 80px; color: rgb(0, 0, 0); font-size: 100px;" />
+    </ui:VisualElement>
+</ui:UXML>

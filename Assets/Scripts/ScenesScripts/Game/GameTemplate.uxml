@@ -1,0 +1,24 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="BackGround" style="flex-grow: 1; align-items: flex-start; flex-direction: row; justify-content: flex-end; display: flex;">
+        <ui:VisualElement name="OnPlay" style="flex-grow: 1; align-items: center; flex-direction: row; justify-content: space-between; display: flex;">
+            <ui:Button text="Back" display-tooltip-when-elided="true" name="Back" focusable="false" style="position: relative; height: 105px; width: 168px; font-size: 50px; background-image: url(&apos;/Assets/Viking/UI/UIElement_Button.png&apos;); color: rgb(0, 0, 0); border-top-left-radius: 165px; border-bottom-left-radius: 165px; border-top-right-radius: 165px; border-bottom-right-radius: 165px; top: auto; left: auto; flex-direction: column;" />
+            <ui:VisualElement name="scoresBox" style="align-items: center; justify-content: flex-start; flex-direction: row; height: 179px; width: 418px; flex-grow: 0; display: flex;">
+                <ui:VisualElement name="ShieldImage" style="background-image: url(&apos;/Assets/Viking/UI/UIElement_HUDIconShield.png&apos;); width: 176px; height: 189px; flex-direction: row; align-items: auto; justify-content: space-between;" />
+                <ui:Label text="0" display-tooltip-when-elided="true" name="Scores" style="height: 127px; width: 254px; font-size: 100px; -unity-text-align: middle-center;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="TimeBox" style="height: 137px; width: 364px; align-items: center; position: relative; top: auto; left: auto; justify-content: flex-start; flex-grow: 0; flex-direction: row-reverse;">
+                <ui:VisualElement name="Image" style="background-image: url(&apos;/Assets/Viking/UI/UIElement_HUDIconTime.png&apos;); width: 89px; height: 112px; position: relative; top: auto; left: auto; flex-direction: column;" />
+                <ui:Label text="0" display-tooltip-when-elided="true" name="Time" style="height: 127px; width: 254px; font-size: 100px; -unity-text-align: middle-center; white-space: nowrap; align-items: auto; position: relative; top: auto; left: auto;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="OnDieBackGround" style="flex-grow: 1; align-items: center; justify-content: center; display: none;">
+        <ui:VisualElement name="OnDie" style="flex-grow: 0; align-items: center; justify-content: flex-end; display: flex;">
+            <ui:VisualElement name="Cross" style="background-image: url(&apos;/Assets/Viking/UI/UIElement_Panel.png&apos;); width: 739px; height: 737px; align-items: center; justify-content: center;">
+                <ui:Label text="Scores : 0" display-tooltip-when-elided="true" name="ScoresEnd" style="font-size: 50px; color: rgb(255, 255, 255); -unity-text-align: upper-center;" />
+                <ui:Label text="Time : 0" display-tooltip-when-elided="true" name="TimeEnd" style="font-size: 50px; -unity-text-align: upper-center; color: rgb(255, 255, 255);" />
+                <ui:Button text="Back" display-tooltip-when-elided="true" name="Menu" style="height: 69px; width: 174px; font-size: 50px; background-image: url(&apos;/Assets/Viking/UI/UIElement_Button.png&apos;); color: rgb(0, 0, 0); border-top-left-radius: 19px; border-bottom-left-radius: 19px; border-top-right-radius: 19px; border-bottom-right-radius: 19px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
