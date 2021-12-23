@@ -7,80 +7,65 @@ using Random = System.Random;
 
 public class GroundSpawner : MonoBehaviour
 {
-    public GameObject []roadType;
-    Vector3 nextSpwanPoint;
-    private GameObject pTile = null;
-    private GameObject ppTile = null;
-    private GameObject cTile = null;
-    private bool isInit = false;
-
     [SerializeField]
-    private Transform _player;
+    private GameObject[] _roadType;
+    private Vector3 _nextSpwanPoint;
+    
+    // Tile position
+    private GameObject _previousTile = null;
+    private GameObject _antepenultimateTile = null;
+    private GameObject _currentTile = null;
+    
+    private bool _isInit = false;
 
-    private float[] angleList =
-    {
-        0, 90, 270
-    };
+    [SerializeField] private Transform _player;
+
+    private float[] _angleList = {0, 90, 270};
 
     //Util
     private Random _rand = new Random();
 
     public void SpawnTile()
     {
-        try
+        _antepenultimateTile = _previousTile;
+        _previousTile = _currentTile;
+        GameObject nextTile;
+        if (_rand.Next(0, 4) == 0 || !_isInit)
         {
-            ppTile = pTile;
-            pTile = cTile;
-            GameObject temp;
-            if (_rand.Next(0, 4) == 0 || !isInit)
-            {
-                temp  = Instantiate(roadType[0], nextSpwanPoint, Quaternion.Euler(0,_player.eulerAngles.y + angleList[0],0));
-            }else if (_rand.Next(0, 4) == 1)
-            {
-                temp = Instantiate(roadType[1], nextSpwanPoint, Quaternion.Euler(0,_player.eulerAngles.y + angleList[1],0));
-            }
-            else if(_rand.Next(0, 4) == 2)
-            {
-                temp = Instantiate(roadType[2], nextSpwanPoint, Quaternion.Euler(0,_player.eulerAngles.y + angleList[2],0));
-            }
-            else
-            {
-                temp = Instantiate(roadType[3], nextSpwanPoint, Quaternion.Euler(0,_player.eulerAngles.y + angleList[0],0));
-            }
-
-            temp.transform.parent = transform;
-            nextSpwanPoint = temp.transform.GetChild(0).transform.position;
-            cTile = temp;
+            nextTile = Instantiate(_roadType[0], _nextSpwanPoint,
+                Quaternion.Euler(0, _player.eulerAngles.y + _angleList[0], 0));
         }
-        catch (Exception)
+        else if (_rand.Next(0, 4) == 1)
         {
-            throw;
+            nextTile = Instantiate(_roadType[1], _nextSpwanPoint,
+                Quaternion.Euler(0, _player.eulerAngles.y + _angleList[1], 0));
         }
-        
-    }
+        else if (_rand.Next(0, 4) == 2)
+        {
+            nextTile = Instantiate(_roadType[2], _nextSpwanPoint,
+                Quaternion.Euler(0, _player.eulerAngles.y + _angleList[2], 0));
+        }
+        else
+        {
+            nextTile = Instantiate(_roadType[3], _nextSpwanPoint,
+                Quaternion.Euler(0, _player.eulerAngles.y + _angleList[0], 0));
+        }
 
-
-    private void Awake()
-    {
-        
+        nextTile.transform.parent = transform;
+        _nextSpwanPoint = nextTile.transform.GetChild(0).transform.position;
+        _currentTile = nextTile;
     }
 
     void Start()
     {
         SpawnTile();
-        isInit = true;
+        _isInit = true;
     }
-
     
-    void Update()
-    {
-        
-    }
 
-    public GameObject PTile => pTile;
+    public GameObject PreviousTile => _previousTile;
 
-    public GameObject PpTile => ppTile;
+    public GameObject AntepenultimateTile => _antepenultimateTile;
 
-    public GameObject CTile => cTile;
-
+    public GameObject CurrentTile => _currentTile;
 }

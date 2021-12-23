@@ -19,7 +19,7 @@ public class RoadController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             GameObject.FindObjectOfType<GroundSpawner>().SpawnTile();
-            Destroy(GameObject.FindObjectOfType<GroundSpawner>().PpTile);
+            Destroy(GameObject.FindObjectOfType<GroundSpawner>().AntepenultimateTile);
         }
     }
 }
