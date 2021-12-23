@@ -47,5 +47,14 @@ Flow of player will use finite state machine.<br>
 ![EnemyStateMachine](https://github.com/UncleThree0402/SchoolProject_VikingRun_Unity/blob/master/ProgramPhoto/EnemyStateMachineDiagram.png)
 >[EnemyStateMachine](https://github.com/UncleThree0402/SchoolProject_VikingRun_Unity/tree/master/Assets/Scripts/EnemyStateMachineScripts)
 
+### Map
 
+This game will have four different structures of the road, Straight, Left, Right and Jump.<br>
+All roads will generate one by one without sequences.
+>[RoadPrefabs](https://github.com/UncleThree0402/SchoolProject_VikingRun_Unity/tree/master/Assets/Prefabs/Road)
+| [GroundSpawn](https://github.com/UncleThree0402/SchoolProject_VikingRun_Unity/blob/master/Assets/Scripts/TerrainScripts/GroundSpawner.cs)
 
+#### Ground Obstacles
+Two types of obstacles spawner used in the game, Bridge and Middle platform.
+>[BridgeObstacleSpawner](https://github.com/UncleThree0402/SchoolProject_VikingRun_Unity/blob/master/Assets/Scripts/TerrainScripts/GroundObstacleSpawner.cs)
+| [PlatformObstacleSpawner](https://github.com/UncleThree0402/SchoolProject_VikingRun_Unity/blob/master/Assets/Scripts/TerrainScripts/PlatObstaclerSpawner.cs)
