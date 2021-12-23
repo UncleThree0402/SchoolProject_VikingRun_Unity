@@ -6,66 +6,74 @@ namespace TerrianSpawner
 {
     public class GroundObstacleSpawner : MonoBehaviour
     {
-        private Vector3 []spawnPoints;
-        [SerializeField]
-        private GameObject[] obstacles;
+        [SerializeField] private GameObject[] _obstacles;
+
+        private Vector3[] _obstaclesSpawnPoints;
 
         private Random _rand = new Random();
 
         private void Awake()
         {
-            spawnPoints = new Vector3[6];
+            _obstaclesSpawnPoints = new Vector3[6];
             for (int i = 0; i < 6; i++)
             {
-                spawnPoints[i] = transform.GetChild(i + 1).transform.position;
+                _obstaclesSpawnPoints[i] = transform.GetChild(i + 1).transform.position;
             }
-            
         }
 
         private void Start()
         {
-            foreach (var VARIABLE in spawnPoints)
+            foreach (var VARIABLE in _obstaclesSpawnPoints)
             {
                 GameObject temp;
                 int randN = _rand.Next(0, 10);
-                if (randN%10 < 7)
+                
+                if (randN < 7)
                 {
-                    temp= Instantiate(obstacles[0], VARIABLE, Quaternion.identity);
+                    temp = Instantiate(_obstacles[0], VARIABLE, Quaternion.identity);
                     temp.transform.parent = transform;
-                    temp.transform.localScale = new Vector3(0.3f,0.5f,0.5f);
+                    temp.transform.localScale = new Vector3(0.3f, 0.5f, 0.5f);
                     temp.transform.Rotate(Vector3.right * 90);
-                }else if (randN%10 >= 7)
+                }
+                else if (randN >= 7)
                 {
-                    temp = Instantiate(obstacles[1], VARIABLE, Quaternion.identity);
+                    temp = Instantiate(_obstacles[1], VARIABLE, Quaternion.identity);
                     temp.transform.parent = transform;
-                    temp.transform.localScale = new Vector3(0.5f,1f,0.5f);
-                    
+                    temp.transform.localScale = new Vector3(0.5f, 1f, 0.5f);
+
                     var position = temp.transform.localPosition;
-                    position.y -= 0.5f ;
+                    position.y -= 0.5f;
                     temp.transform.localPosition = position;
                 }
                 else
                 {
-                   continue;
+                    continue;
                 }
-                
-                
+
+
                 int randI = _rand.Next(0, 3);
-                
-                if (randI % 3 == 1)
+
+                switch (randI)
                 {
-                    var position = temp.transform.localPosition;
-                    position.x = 1 ;
-                    temp.transform.localPosition = position;
+                    case 1:
+                    {
+                        var position = temp.transform.localPosition;
+                        position.x = 1;
+                        temp.transform.localPosition = position;
+                        break;
+                    }
+
+                    case 2:
+                    {
+                        var position = temp.transform.localPosition;
+                        position.x = -1;
+                        temp.transform.localPosition = position;
+                        break;
+                    }
+
+                    default:
+                        break;
                 }
-                else if(randI % 3 == 2)
-                {
-                    var position = temp.transform.localPosition;
-                    position.x = -1;
-                    temp.transform.localPosition = position;
-                }
-                
-               
             }
         }
     }
