@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using Interface;
-using UnityEngine;
 
 public class PlayerStatsModel : IObservable
 {
@@ -11,7 +9,7 @@ public class PlayerStatsModel : IObservable
 
     private int scores = 0;
     
-    private float time = 0;
+    private float survivalTime = 0;
 
     public PlayerStatsModel()
     {
@@ -42,10 +40,10 @@ public class PlayerStatsModel : IObservable
     
     public float Time
     {
-        get => time;
+        get => survivalTime;
         set
         {
-            time = value;
+            survivalTime = value;
             Notify();
         }
     }

@@ -5,7 +5,7 @@ using Random = System.Random;
 
 public class PlatObstaclerSpawner : MonoBehaviour
 {
-    private Vector3 spwanpoint;
+    private Vector3 _spwanpoint;
     [SerializeField] private GameObject[] obstacles;
 
     private Random _Random = new Random();
@@ -13,16 +13,19 @@ public class PlatObstaclerSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spwanpoint = transform.GetChild(1).transform.position;
-        if (_Random.Next(0, 3) % 2 == 1)
-        {
-            var temp = Instantiate(obstacles[0], spwanpoint, transform.parent.localRotation);
-            temp.transform.parent = transform;
-        }
-    }
+        _spwanpoint = transform.GetChild(1).transform.position;
 
-    // Update is called once per frame
-    void Update()
-    {
+        switch (_Random.Next(0, 3))
+        {
+            case 1:
+            {
+                var temp = Instantiate(obstacles[0], _spwanpoint, transform.parent.localRotation);
+                temp.transform.parent = transform;
+                break;
+            }
+            
+            default:
+                break;
+        }
     }
 }
